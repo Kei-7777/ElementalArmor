@@ -11,9 +11,11 @@ import ca.minecore.elementalarmor.listeners.fire.Explosion;
 import ca.minecore.elementalarmor.listeners.fire.FireThorns;
 import ca.minecore.elementalarmor.listeners.fire.Fireproof;
 import ca.minecore.elementalarmor.listeners.fire.LavaWalking;
+import ca.minecore.elementalarmor.listeners.magic.MagicWand;
 import ca.minecore.elementalarmor.listeners.util.AddCharm;
 import ca.minecore.elementalarmor.listeners.util.SoulBinding;
 import ca.minecore.elementalarmor.listeners.water.FastSwim;
+import ca.minecore.elementalarmor.magic.Magic;
 import ca.minecore.elementalarmor.util.elements.fire.FrozenLava;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -51,6 +53,7 @@ public final class Main extends JavaPlugin {
         registerManager();
         registerCommands();
         registerListeners();
+        Magic.reset();
 
         startRepeatingTasks();
     }
@@ -133,6 +136,9 @@ public final class Main extends JavaPlugin {
         pm.registerEvents(new Telekinesis(), this);
         // water
         pm.registerEvents(new FastSwim(), this);
+
+        // magic wands
+        pm.registerEvents(new MagicWand(), this);
 
     }
 
